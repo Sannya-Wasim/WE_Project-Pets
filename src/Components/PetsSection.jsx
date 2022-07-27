@@ -4,7 +4,7 @@ import adoptPet_cat from '../assets/images/adoptPet_cat.jpg'
 import adoptPet_fish from '../assets/images/adoptPet_fish.jpg'
 import adoptPet_parrot from '../assets/images/adoptPet_parrot.jpg'
 import adoptPet_rabbit from '../assets/images/adoptPet_rabbit.jpg'
-import adoptPet from '../assets/images/adoptPet.jpg'
+import adoptPet_turtle from '../assets/images/adoptPet_turtle.jpg'
 
 
 var pets = [
@@ -34,7 +34,7 @@ var pets = [
     description: "A blue and white naughty cat",
   },
   {
-    image: adoptPet,
+    image: adoptPet_turtle,
     name: "Tom",
     description: "A blue and white naughty cat",
   },
