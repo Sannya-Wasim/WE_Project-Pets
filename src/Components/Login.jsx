@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/css/login_style.css";
 import copy from "../assets/images/logo copy.png";
 import NavBar from "./NavBar.jsx";
+import Axios from "axios";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    Axios.get("http://localhost/5000/login", { email, password }).then(
+      (response) => {
+        console.log(response);
+      }
+    );
+  };
+
   return (
     <div>
       <div id="nav-div">
@@ -17,10 +29,7 @@ function Login() {
             <h2 id="head2" style={{ color: "white" }}>
               Welcome Back!
             </h2>
-            <p style={{ color: "white" }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa,
-              ducimus.
-            </p>
+            <p style={{ color: "white" }}>Log In to your account.</p>
           </div>
         </section>
 
@@ -30,10 +39,22 @@ function Login() {
             <hr />
             <form action="">
               <div className="form">
-                <input type="text" placeholder="Enter your Name" />
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
               </div>
               <div className="form">
-                <input type="text" placeholder="Password" />
+                <input
+                  type="text"
+                  placeholder="Password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
               </div>
 
               <div className="labels">
@@ -41,7 +62,7 @@ function Login() {
                   <input type="checkbox" name="remember_me" id="" /> Remember Me{" "}
                 </div>
                 <div id="btn">
-                  <button>Log In</button>{" "}
+                  <button onClick={handleLogin}>Log In</button>{" "}
                 </div>
               </div>
             </form>

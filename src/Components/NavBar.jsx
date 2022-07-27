@@ -20,7 +20,7 @@ const NavBar = () => {
     <nav id="navigation-bar">
       <ul id="nav-ul">
         <li>
-          <NavLink to="/home" aria-current="page" className="nav-element">
+          <NavLink to="/" aria-current="page" className="nav-element">
             Home
           </NavLink>
         </li>
@@ -67,7 +67,7 @@ const NavBar = () => {
         <li
           onMouseOver={() => {
             setHistory(true);
-            <NavLink to="/history" />
+            <NavLink to="/history" />;
           }}
           onMouseOut={() => {
             setHistory(false);

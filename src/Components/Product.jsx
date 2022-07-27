@@ -5,11 +5,11 @@ import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { useState, useEffect } from "react";
-import NavBar from './NavBar';
+import NavBar from "./NavBar";
 
 function Product() {
   const { id } = useParams();
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -18,14 +18,15 @@ function Product() {
   };
 
   useEffect(() => {
-    const getProduct = async () => {
-      setLoading(true);
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-      setProduct(await response.json());
-      setLoading(false);
-    };
     getProduct();
   }, []);
+  const getProduct = async () => {
+    setLoading(true);
+    const response = await fetch(`http://localhost:5000/pets/${id}`);
+    // const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    setProduct(await response.json());
+    setLoading(false);
+  };
 
   const Loading = () => {
     return (
@@ -47,28 +48,24 @@ function Product() {
   };
 
   const ShowProduct = () => {
+    const pet = product[0];
     return (
       <>
         <div className="col-md-6">
-          <img
-            src={product.image}
-            alt={product.title}
-            height="400px"
-            width="400px"
-          />
+          <img src={pet.image} alt={pet.name} height="400px" width="400px" />
         </div>
         <div className="col-md-6">
-          <h4 className="text-uppercae text-black-50">{product.category}</h4>
-          <h1 classname="display-5">{product.title}</h1>
+          <h4 className="text-uppercae text-black-50">{pet.category_id}</h4>
+          <h1 className="display-5">{pet.name}</h1>
           <p className="lead fw-bolder">
-            Rating {product.rating && product.rating.rate}
+            {/* Rating {product.rating && product.rating.rate} */}
             <i className="fa fa-star"></i>
           </p>
-          <h3 className="display-6 fw-bold my-4">${product.price}</h3>
-          <p className="lead">{product.description}</p>
+          <h3 className="display-6 fw-bold my-4">${pet.price}</h3>
+          <p className="lead">{pet.description}</p>
           <button
             className="btn btn-outline-dark px-4 py-2"
-            onClick={() => addProduct(product)}
+            onClick={() => addProduct(pet)}
           >
             Add to Cart
           </button>

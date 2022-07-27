@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/css/signup_style.css";
 import copy from "../assets/images/logo copy.png";
 import NavBar from "./NavBar";
+import Axios from "axios";
 
 function SignUp() {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handleSignup = () => {
+    Axios.post(`http://localhost:5000/signup`, {
+      // Axios.post(`${process.env.BASE_URL}/signup`, {
+      name,
+      password,
+      email,
+      address,
+      phone,
+    }).then((e) => {
+      //TODO: Store in local storage
+      localStorage.setItem("user", { name, password, email, address, phone });
+    });
+  };
+
   return (
     <div>
       <div id="nav-div">
@@ -18,8 +39,8 @@ function SignUp() {
               Welcome!
             </h2>
             <p style={{ color: "white" }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa,
-              ducimus.
+              Create your free account and get yourself lost in the world of
+              pets.
             </p>
           </div>
         </section>
@@ -31,33 +52,66 @@ function SignUp() {
             <form action="" className="container">
               <div className="left-container">
                 <div className="input">
-                  <input type="text" placeholder="Enter your First Name" />
+                  <input
+                    type="text"
+                    placeholder="Enter your Name"
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  />
                 </div>
                 <div className="input">
-                  <input type="text" placeholder="Enter your  Last Name" />
+                  <input
+                    type="text"
+                    placeholder="Enter your Email"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
                 </div>
                 <div className="input">
-                  <input type="text" placeholder="Enter your Email" />
+                  <input
+                    type="text"
+                    placeholder="Enter your address"
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                    }}
+                  />
                 </div>
               </div>
               <div className="right-container">
-                  <div className="input">
-                    <input type="text" placeholder="Password" />
-                  </div>
-                  <div className="input">
-                    <input type="file" id="imageFile" accept="image/*" />
-                  </div>
+                <div className="input">
+                  <input
+                    type="text"
+                    placeholder="Password"
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="input">
+                  <input
+                    type="text"
+                    placeholder="Contact Number"
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }}
+                  />
+                </div>
+                {/* <div className="input">
+                  <input type="file" id="imageFile" accept="image/*" />
+                </div> */}
 
-                  <div className="labels">
-                    <div id="checkbox">
-                      <input type="checkbox" name="remember_me" id="" />{" "}
-                      Remember Me{" "}
-                    </div>
-                    <div id="btn">
-                      <button>Sign Up</button>{" "}
-                    </div>
+                <div className="labels">
+                  <div id="checkbox">
+                    <input type="checkbox" name="remember_me" id="" /> Remember
+                    Me{" "}
+                  </div>
+                  <div id="btn">
+                    <button onClick={handleSignup}>Sign Up</button>{" "}
                   </div>
                 </div>
+              </div>
             </form>
           </div>
         </section>

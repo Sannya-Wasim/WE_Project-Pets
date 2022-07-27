@@ -1,4 +1,4 @@
-import rightArrow from '../assets/images/right-arrow.png'
+import rightArrow from "../assets/images/right-arrow.png";
 
 const PetCard = ({ pet }) => {
   return (
@@ -8,11 +8,7 @@ const PetCard = ({ pet }) => {
       <p>{pet.description}</p>
       <div className="arrow-button">
         <a href="/pets">Adopt Now</a>
-        <img
-          src={rightArrow}
-          alt="arrow"
-          className="right-arrow"
-        />
+        <img src={rightArrow} alt="arrow" className="right-arrow" />
       </div>
     </figure>
   );

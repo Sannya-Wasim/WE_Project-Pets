@@ -13,7 +13,8 @@ function Pets() {
   useEffect(() => {
     const getPets = async () => {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch("http://localhost:5000/pets");
+      // const response = await fetch("https://fakestoreapi.com/products");
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
@@ -46,7 +47,7 @@ function Pets() {
   };
 
   const filterPets = (cat) => {
-    const updatedList = data.filter((x) => x.category === cat);
+    const updatedList = data.filter((x) => x.category_id == cat);
     setFilter(updatedList);
   };
 
@@ -58,31 +59,43 @@ function Pets() {
             class="btn btn-outline-dark me-2"
             onClick={() => setFilter(data)}
           >
-            All Products
+            All Pets
           </button>
           <button
             class="btn btn-outline-dark me-2"
-            onClick={() => filterPets("men's clothing")}
+            onClick={() => filterPets(1)}
           >
-            Men's Clothing
+            Dogs
           </button>
           <button
             class="btn btn-outline-dark me-2"
-            onClick={() => filterPets("women's clothing")}
+            onClick={() => filterPets(2)}
           >
-            Women's Clothing
+            Cats
           </button>
           <button
             class="btn btn-outline-dark me-2"
-            onClick={() => filterPets("jewelery")}
+            onClick={() => filterPets(3)}
           >
-            Jewellery
+            Horses
           </button>
           <button
             class="btn btn-outline-dark me-2"
-            onClick={() => filterPets("electronics")}
+            onClick={() => filterPets(4)}
           >
-            Electronics
+            Parrots
+          </button>
+          <button
+            class="btn btn-outline-dark me-2"
+            onClick={() => filterPets(5)}
+          >
+            Rabbits
+          </button>
+          <button
+            class="btn btn-outline-dark me-2"
+            onClick={() => filterPets(6)}
+          >
+            Turtles
           </button>
         </div>
 
@@ -94,12 +107,13 @@ function Pets() {
                   <img
                     src={product.image}
                     className="card-img-top"
-                    alt={product.title}
+                    alt={product.name}
                     height="250px"
                   />
                   <div className="card-body">
                     <h5 className="card-title mb-0">
-                      {product.title.substring(0, 12)}...
+                      {product.name}
+                      {/* {product.title.substring(0, 12)}... */}
                     </h5>
                     <p className="card-text lead fw-bold">${product.price}</p>
                     <NavLink
@@ -117,6 +131,7 @@ function Pets() {
       </>
     );
   };
+
   return (
     <div>
       <div id="nav-div">
