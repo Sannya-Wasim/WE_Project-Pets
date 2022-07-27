@@ -2,14 +2,17 @@ import { useState } from "react";
 import DropDown from "./Dropdown";
 import { NavLink } from "react-router-dom";
 import downArrow from "../assets/images/downArrow.png";
+import whiteArrow from "../assets/images/whiteArrow.png";
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const productItems = ["Food Products", "Accessories", "Toys"];
   const petItems = ["Cats", "Dogs", "Parrots"];
+  const history = ["Order History"];
 
   const [showProductsDropDown, setProductsDropDown] = useState(false);
   const [showPetsDropDown, setPetsDropDown] = useState(false);
+  const [showHistory, setHistory] = useState(false);
 
   const state = useSelector((state) => state.handleCart);
 
@@ -61,10 +64,20 @@ const NavBar = () => {
             About Us
           </NavLink>
         </li>
-        <li>
+        <li
+          onMouseOver={() => {
+            setHistory(true);
+            <NavLink to="/history" />
+          }}
+          onMouseOut={() => {
+            setHistory(false);
+          }}
+        >
           <NavLink aria-current="page" className="button" to="/login">
             Login
+            <img src={whiteArrow} alt="More" />
           </NavLink>
+          {showHistory && <DropDown items={history} />}
         </li>
         <li>
           <NavLink aria-current="page" className="button" to="/signup">

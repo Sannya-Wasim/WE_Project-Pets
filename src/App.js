@@ -11,6 +11,7 @@ import Products from './Components/Products';
 import Pets from './Components/Pets';
 import Product from './Components/Product';
 import Cart from './Components/Cart';
+import History from './Components/History';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/history" element={<History/>}/>
       </Routes>
     </>
   );

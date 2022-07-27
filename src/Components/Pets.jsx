@@ -127,7 +127,7 @@ function Pets() {
       <div class="container my-5 py-5">
         <div class="row">
           <div class="col-12 mb-5">
-            <h1 class="display-6 fw-bolder text-center">Latest Products</h1>
+            <h1 class="display-6 fw-bolder text-center">Our Pets</h1>
             <hr />
           </div>
           <div class="row justify-content-center">

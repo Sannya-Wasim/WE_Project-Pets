@@ -7,7 +7,7 @@ const PetCard = ({ pet }) => {
       <h3>{pet.name}</h3>
       <p>{pet.description}</p>
       <div className="arrow-button">
-        <a href="">Adopt Now</a>
+        <a href="/pets">Adopt Now</a>
         <img
           src={rightArrow}
           alt="arrow"

@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
       <h3>{product.name}</h3>
       <p>{product.description}</p>
       <div className="arrow-button">
-        <a href="">Get Now</a>
+        <a href={`${product.path}`}>Get Now</a>
         <img
           src={rightArrow}
           alt="arrow"

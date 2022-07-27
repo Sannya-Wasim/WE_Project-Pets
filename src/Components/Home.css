@@ -149,12 +149,12 @@
   }
   #services {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
   }
   #service-element {
-    flex-basis: 22%;
+    flex-basis: 16%;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -164,6 +164,10 @@
     border: 3px solid var(--white);
     margin: 0px;
     transition: margin 0.8s;
+  }
+
+  #service-element a{
+    color: var(--black);
   }
   #service-element:hover {
     /* border-color: var(--primaryColor);
@@ -202,6 +206,7 @@
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 5px;
     /* background-color: var(--primaryColor); */
     border: 2px solid var(--primaryColor);

@@ -10,21 +10,25 @@ const services = [
     image: adopt,
     title: "Adopt Pets",
     subtitle: "Adorable animals waiting for your adoption",
+    path:"pets",
   },
   {
     image: food,
     title: "Pet Food",
     subtitle: "Get high quality food for your pets",
+    path:"products",
   },
   {
     image: accessories,
     title: "Accessories",
     subtitle: "Toys and accessories for your pets care",
+    path:"products",
   },
   {
     image: stolen,
     title: "Stolen or Lost",
     subtitle: "Report for your lost or stolen pets",
+    path:"stolen",
   },
 ];
 

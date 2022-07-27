@@ -5,31 +5,37 @@ var products = [
     image: "src/assets/images/petFood.png",
     name: "Pet Food",
     description: "Pet Food Description",
+    path:"products"
   },
   {
     image: "src/assets/images/petFood.png",
     name: "Pet Food",
     description: "Pet Food Description",
+    path:"products"
   },
   {
     image: "src/assets/images/petFood.png",
     name: "Pet Food",
     description: "Pet Food Description",
+    path:"products"
   },
   {
     image: "src/assets/images/petFood.png",
     name: "Pet Food",
     description: "Pet Food Description",
+    path:"products"
   },
   {
     image: "src/assets/images/petFood.png",
     name: "Pet Food",
     description: "Pet Food Description",
+    path:"products"
   },
   {
     image: "src/assets/images/petFood.png",
     name: "Pet Food",
     description: "Pet Food Description",
+    path:"products"
   },
 ];
 

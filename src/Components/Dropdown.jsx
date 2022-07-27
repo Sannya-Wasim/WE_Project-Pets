@@ -1,3 +1,5 @@
+import {NavLink} from 'react-router-dom';
+
 const DropDown = ({ items }) => {
   return (
     <div className="dropdown">
@@ -6,6 +8,8 @@ const DropDown = ({ items }) => {
           return (
             <li>
               <a href="">{currentItem}</a>
+              {/* <NavLink to={`${currentItem}`}>{currentItem}</NavLink> */}
+              {/* <NavLink to="/home" /> */}
             </li>
           );
         })}

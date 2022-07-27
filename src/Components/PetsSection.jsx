@@ -10,33 +10,39 @@ import adoptPet_turtle from '../assets/images/adoptPet_turtle.jpg'
 var pets = [
   {
     image: adoptPet_dog,
-    name: "Spike",
-    description: "A blue and white naughty cat",
+    name: "Dogs",
+    description: "Find yourself a loyal buddy!",
+    path:"dogs"
   },
   {
     image: adoptPet_cat,
-    name: "Tom",
-    description: "A blue and white naughty cat",
+    name: "Cats",
+    description: "Explore a range of cheeky caregivers!",
+    path:"cats"
   },
   {
     image: adoptPet_fish,
-    name: "Tom",
-    description: "A blue and white naughty cat",
+    name: "Fishes",
+    description: "Dive into the world of aquatic buddies!",
+    path:"fishes"
   },
   {
     image: adoptPet_parrot,
-    name: "Tom",
-    description: "A blue and white naughty cat",
+    name: "Parrots",
+    description: "Discover a spectrum of colourful birds!",
+    path:"parrots"
   },
   {
     image: adoptPet_rabbit,
-    name: "Tom",
-    description: "A blue and white naughty cat",
+    name: "Rabbits",
+    description: "All you need is love and a buddy rabbit!",
+    path:"rabbits"
   },
   {
     image: adoptPet_turtle,
-    name: "Tom",
-    description: "A blue and white naughty cat",
+    name: "Turtles",
+    description: "Keep calm and buy a turtle!",
+    path:"turtles"
   },
 ];
 
