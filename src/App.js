@@ -7,11 +7,17 @@ import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import Contact from "./Components/Contact";
 import About from "./Components/About";
+// import Products from "./Components/Products";
+// import Pets from "./Components/Pets";
+// import Product from "./Components/Product";
+// import Cart from "./Components/Cart";
+// import History from "./Components/History";
 import Products from "./Components/Products";
 import Pets from "./Components/Pets";
 import Product from "./Components/Product";
 import Cart from "./Components/Cart";
 import History from "./Components/History";
+import Stolen from "./Components/Stolen";
 
 function App() {
   return (
@@ -30,6 +36,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/history" element={<History />} />
+        <Route path="/stolen" element={<Stolen />} />
       </Routes>
     </>
   );
