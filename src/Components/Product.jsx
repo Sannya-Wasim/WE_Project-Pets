@@ -4,7 +4,8 @@ import { addCart } from "../redux/action/index";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from "react";
+import NavBar from './NavBar';
 
 function Product() {
   const { id } = useParams();
@@ -80,6 +81,11 @@ function Product() {
   };
   return (
     <div>
+      <div id="nav-div">
+        <h1>Mithoo</h1>
+        <NavBar />
+      </div>
+
       <div className="container py-5 ">
         <div className="row">{loading ? <Loading /> : <ShowProduct />}</div>
       </div>
