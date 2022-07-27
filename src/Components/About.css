@@ -1,0 +1,51 @@
+.App-header{
+    font-size: 80px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    display: flex;
+    background-color: wheat;
+}
+.App-header .heading{
+    width: 400px;
+    font-size: 100px;
+    margin-top: 80px;
+    margin-left: 120px;
+    text-align: center;
+}
+.App-header img{
+    border: 5px solid crimson;
+    border-radius: 150px;
+    margin-left: 150.3px;
+}
+.About .below{
+    width:1000px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    margin: auto;
+    margin-top: 70px;
+    height: 800px;
+}
+.About .below p{
+    font-size: 30px;
+    font-family: cursive;
+}
+.About .below p span{
+    font-size: 35px;
+}
+.About .below .service{
+    background-color: wheat;
+    border: 2px solid crimson;
+    color: black;
+    width: 300px;
+    margin: auto;
+    padding-bottom: 20px;
+}
+.About .below .service a{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+.About .below .service a:hover{
+    font-size: 25px;
+}
