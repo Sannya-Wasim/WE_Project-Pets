@@ -7,7 +7,7 @@ import Skeleton from "react-loading-skeleton";
 import { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 
-function Product() {
+function IndividualPet() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ function Product() {
 
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [id]);
   const getProduct = async () => {
     setLoading(true);
     const response = await fetch(`http://localhost:5000/pets/${id}`);
@@ -48,7 +48,7 @@ function Product() {
   };
 
   const ShowProduct = () => {
-    const pet = product[0];
+    const pet = product;
     return (
       <>
         <div className="col-md-6">
@@ -90,4 +90,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default IndividualPet;

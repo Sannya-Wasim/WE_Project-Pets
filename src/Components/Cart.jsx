@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addCart, delCart } from "../redux/action";
 import { NavLink } from "react-router-dom";
 import NavBar from "./NavBar";
+import Axios from "axios";
 
 const Cart = () => {
   const state = useSelector((state) => state.handleCart);
@@ -38,16 +39,16 @@ const Cart = () => {
               <div className="col-md-4">
                 <img
                   src={product.image}
-                  alt={product.title}
+                  alt={product.name}
                   height="200px"
                   width="180px"
                 />
               </div>
               <div className="col-md-4">
-                <h3>{product.title}</h3>
+                <h3>{product.name}</h3>
                 <p className="lead fw-bold">
                   {product.qty} X ${product.price}=$
-                  {product.qty * product.price}
+                  {parseInt(product.qty) * parseInt(product.price)}
                 </p>
                 <button
                   className="btn btn-outline-dark me-4"
@@ -57,7 +58,10 @@ const Cart = () => {
                 </button>
                 <button
                   className="btn btn-outline-dark me-4"
-                  onClick={() => handleAdd(product)}
+                  onClick={() => {
+                    handleAdd(product);
+                    console.log(state);
+                  }}
                 >
                   <i className="fa fa-plus"></i>
                 </button>
@@ -74,9 +78,31 @@ const Cart = () => {
       <>
         <div className="container">
           <div className="row mx-auto">
-            <NavLink to="/checkout" className="btn btn-outline-dark mb-5 w-100 mx-auto">
+            {/* <NavLink
+              to="/checkout"
+              className="btn btn-outline-dark mb-5 w-100 mx-auto"
+            > */}
+            <button
+              onClick={() => {
+                state.map((prod) => {
+                  const id = prod.id;
+                  const name = prod.name;
+                  const price = prod.price;
+                  const qty = prod.qty;
+                  Axios.post("http://localhost:5000/order", {
+                    id,
+                    name,
+                    price,
+                    qty,
+                  });
+                });
+                alert("Order Placed");
+                window.location.reload(false);
+              }}
+            >
               Proceed to Checkout
-            </NavLink>
+            </button>
+            {/* </NavLink> */}
           </div>
         </div>
       </>
@@ -88,7 +114,17 @@ const Cart = () => {
         <h1>Mithoo</h1>
         <NavBar />
       </div>
-
+      <NavLink to="/history">
+        <p
+          style={{
+            textAlign: "right",
+            marginRight: "3rem",
+            fontWeight: "bold",
+          }}
+        >
+          History
+        </p>
+      </NavLink>
       {state.length === 0 && emptyCart()}
       {state.length !== 0 && state.map(cartItems)}
       {state.length !== 0 && buttons()}

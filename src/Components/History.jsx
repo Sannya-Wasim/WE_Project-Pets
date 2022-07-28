@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
+import Axios from "axios";
 
 function History() {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    Axios.get("http://localhost:5000/order").then((response) => {
+      setOrders(response.data);
+    });
+  }, []);
+
+  const handleDelete = (order_id) => {
+    Axios.delete(`http://localhost:5000/order/${order_id}`).then((res) => {});
+    window.location.reload(false);
+  };
+
   return (
     <div>
       <div id="nav-div">
@@ -18,44 +32,39 @@ function History() {
             <thead>
               <tr>
                 <th scope="col">Order #</th>
-                <th scope="col">Delivery Date</th>
-                <th scope="col">Delivery Type</th>
-                <th scope="col">Order Total</th>
-                <th scope="col">Order Status</th>
-                <th scope="col">Details</th>
+                <th scope="col">Product #</th>
+                <th scope="col">Product</th>
+                <th scope="col">Total</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Update</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1828312831</th>
-                <td>02/17/21 Wednesday</td>
-                <td>Home Delivery</td>
-                <td>$45.56</td>
-                <td>Delivered</td>
-                <td>
-                  <a>View</a> | <a>Cancel</a> | <a>Modify</a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">823812324</th>
-                <td>06/01/21 Friday</td>
-                <td>Cash on Delivery</td>
-                <td>$3.45</td>
-                <td>Pending</td>
-                <td>
-                  <a>View</a> | <a>Cancel</a> | <a>Modify</a>
-                </td>
-              </tr>
-              <tr>
-              <th scope="row">7452720947</th>
-                <td>10/28/22 Sunday</td>
-                <td>Home Delivery</td>
-                <td>$100.6</td>
-                <td>Delivered</td>
-                <td>
-                  <a>View</a> | <a>Cancel</a> | <a>Modify</a>
-                </td>
-              </tr>
+              {orders.length > 0 ? (
+                orders.map((ord) => {
+                  return (
+                    <tr>
+                      <th scope="row">{ord.order_id}</th>
+                      <td>{ord.product_id}</td>
+                      <td>{ord.product_name}</td>
+                      <td>{ord.price}</td>
+                      <td>{ord.quantity}</td>
+                      <td>
+                        <button
+                          onClick={() => {
+                            handleDelete(ord.order_id);
+                          }}
+                          style={{ border: "none" }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <h2>No Order History</h2>
+              )}
             </tbody>
           </table>
         </div>

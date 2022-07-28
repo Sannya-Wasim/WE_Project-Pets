@@ -37,7 +37,9 @@ const NavBar = () => {
             Products
             <img src={downArrow} alt="More" />
           </NavLink>
-          {showProductsDropDown && <DropDown items={productItems} />}
+          {showProductsDropDown && (
+            <DropDown items={productItems} isProduct={true} />
+          )}
         </li>
         <li
           className="dropdown-li"
@@ -52,7 +54,7 @@ const NavBar = () => {
             Pets
             <img src={downArrow} alt="More" />
           </NavLink>
-          {showPetsDropDown && <DropDown items={petItems} />}
+          {showPetsDropDown && <DropDown items={petItems} isProduct={false} />}
         </li>
         <li>
           <NavLink aria-current="page" to="/contact">
@@ -64,7 +66,7 @@ const NavBar = () => {
             About Us
           </NavLink>
         </li>
-        <li
+        {/* <li
           onMouseOver={() => {
             setHistory(true);
             <NavLink to="/history" />;
@@ -83,7 +85,7 @@ const NavBar = () => {
           <NavLink aria-current="page" className="button" to="/signup">
             Sign up
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink aria-current="page" className="button" to="/cart">
             <i className="fa fa-shopping-cart me-1"></i> Cart({state.length})

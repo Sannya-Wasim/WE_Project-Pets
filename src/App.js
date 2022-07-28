@@ -14,10 +14,11 @@ import About from "./Components/About";
 // import History from "./Components/History";
 import Products from "./Components/Products";
 import Pets from "./Components/Pets";
-import Product from "./Components/Product";
+import IndividualPet from "./Components/IndividualPet";
 import Cart from "./Components/Cart";
 import History from "./Components/History";
 import Stolen from "./Components/Stolen";
+import IndividualProduct from "./Components/IndividualProduct";
 
 function App() {
   return (
@@ -27,8 +28,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<IndividualProduct />} />
         <Route path="/pets" element={<Pets />} />
-        <Route path="/pets/:id" element={<Product />} />
+        <Route path="/pets/:id" element={<IndividualPet />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

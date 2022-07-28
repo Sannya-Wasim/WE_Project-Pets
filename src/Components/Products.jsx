@@ -13,7 +13,8 @@ function Products() {
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
+      // const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch("http://localhost:5000/products");
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
@@ -46,7 +47,7 @@ function Products() {
   };
 
   const filterProduct = (cat) => {
-    const updatedList = data.filter((x) => x.category === cat);
+    const updatedList = data.filter((x) => x.category_id == cat);
     setFilter(updatedList);
   };
 
@@ -62,27 +63,21 @@ function Products() {
           </button>
           <button
             class="btn btn-outline-dark me-2"
-            onClick={() => filterProduct("men's clothing")}
+            onClick={() => filterProduct(1)}
           >
-            Men's Clothing
+            Accessories
           </button>
           <button
             class="btn btn-outline-dark me-2"
-            onClick={() => filterProduct("women's clothing")}
+            onClick={() => filterProduct(2)}
           >
-            Women's Clothing
+            Toys
           </button>
           <button
             class="btn btn-outline-dark me-2"
-            onClick={() => filterProduct("jewelery")}
+            onClick={() => filterProduct(3)}
           >
-            Jewellery
-          </button>
-          <button
-            class="btn btn-outline-dark me-2"
-            onClick={() => filterProduct("electronics")}
-          >
-            Electronics
+            Food Products
           </button>
         </div>
 
@@ -98,9 +93,7 @@ function Products() {
                     height="250px"
                   />
                   <div className="card-body">
-                    <h5 className="card-title mb-0">
-                      {product.title.substring(0, 12)}...
-                    </h5>
+                    <h5 className="card-title mb-0">{product.name}</h5>
                     <p className="card-text lead fw-bold">${product.price}</p>
                     <NavLink
                       to={`${product.id}`}
