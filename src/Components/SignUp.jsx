@@ -21,8 +21,8 @@ function SignUp() {
       phone,
     }).then((e) => {
       //TODO: Store in local storage
-      localStorage.setItem("user", { name, password, email, address, phone });
     });
+    localStorage.setItem("user", "loggedIn");
   };
 
   return (
@@ -34,7 +34,7 @@ function SignUp() {
       <section id="background">
         <section className="logo">
           <div id="content">
-            <img src={copy} alt="Picture not Found" />
+            <img src={copy} alt="Not Found" />
             <h2 id="head2" style={{ color: "white" }}>
               Welcome!
             </h2>

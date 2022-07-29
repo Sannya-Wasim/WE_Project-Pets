@@ -35,7 +35,7 @@ const Cart = () => {
       <>
         <div className="px-4 my-5 bg-light rounded-3 py-5">
           <div className="container py-4">
-            <div className="row justify-content-center">
+            <div className="row justify-content-between">
               <div className="col-md-4">
                 <img
                   src={product.image}
@@ -50,21 +50,23 @@ const Cart = () => {
                   {product.qty} X ${product.price}=$
                   {parseInt(product.qty) * parseInt(product.price)}
                 </p>
-                <button
-                  className="btn btn-outline-dark me-4"
-                  onClick={() => handleDel(product)}
-                >
-                  <i className="fa fa-minus"></i>
-                </button>
-                <button
-                  className="btn btn-outline-dark me-4"
-                  onClick={() => {
-                    handleAdd(product);
-                    console.log(state);
-                  }}
-                >
-                  <i className="fa fa-plus"></i>
-                </button>
+                <div className="d-flex justify-content-start">
+                  <button
+                    className="btn btn-outline-dark me-4"
+                    onClick={() => handleDel(product)}
+                  >
+                    <i className="fa fa-minus"></i>
+                  </button>
+                  <button
+                    className="btn btn-outline-dark me-4"
+                    onClick={() => {
+                      handleAdd(product);
+                      console.log(state);
+                    }}
+                  >
+                    <i className="fa fa-plus"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -84,20 +86,24 @@ const Cart = () => {
             > */}
             <button
               onClick={() => {
-                state.map((prod) => {
-                  const id = prod.id;
-                  const name = prod.name;
-                  const price = prod.price;
-                  const qty = prod.qty;
-                  Axios.post("http://localhost:5000/order", {
-                    id,
-                    name,
-                    price,
-                    qty,
+                if (localStorage.getItem("user") !== null) {
+                  state.map((prod) => {
+                    const id = prod.id;
+                    const name = prod.name;
+                    const price = prod.price;
+                    const qty = prod.qty;
+                    Axios.post("http://localhost:5000/order", {
+                      id,
+                      name,
+                      price,
+                      qty,
+                    });
                   });
-                });
-                alert("Order Placed");
-                window.location.reload(false);
+                  alert("Order Placed");
+                  window.location.reload(false);
+                } else {
+                  alert("Log in to your account to make a purchase");
+                }
               }}
             >
               Proceed to Checkout

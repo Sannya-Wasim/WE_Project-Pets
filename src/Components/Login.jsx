@@ -14,6 +14,7 @@ function Login() {
         console.log(response);
       }
     );
+    localStorage.setItem("user", "loggedIn");
   };
 
   return (
@@ -25,7 +26,7 @@ function Login() {
       <section id="bg">
         <section className="logo">
           <div id="content">
-            <img src={copy} alt="Picture not Found" />
+            <img src={copy} alt="Not Found" />
             <h2 id="head2" style={{ color: "white" }}>
               Welcome Back!
             </h2>

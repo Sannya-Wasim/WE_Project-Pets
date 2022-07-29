@@ -61,7 +61,7 @@ function IndividualProduct() {
             {/* Rating {product.rating && product.rating.rate} */}
             <i className="fa fa-star"></i>
           </p>
-          <h3 className="display-6 fw-bold my-4">${pet.price}</h3>
+          <h3 className="display-6 fw-bold my-4">{pet.price}</h3>
           <p className="lead">{pet.description}</p>
           <button
             className="btn btn-outline-dark px-4 py-2"
